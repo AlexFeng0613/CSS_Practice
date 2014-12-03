@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+            /*background : linear-gradient(#d3d3d3,#8a8a8a);*/
+            background:linear-gradient(rgba(32, 254, 220, 0.73), #2efdff);
+            background-attachment: fixed;
+        }
+
+        body > header{
+            /*background: linear-gradient(#1eb8ac, #a0acaa);*/
+            height: 100px;
+            top:0;
+            flex-direction: column;
+            width: 100%;
+            font-family: 'Roboto',sans-serif;
+            border-bottom: 1px  solid slategray;
+            /*position: fixed;
+            z-index: 1;*/
+        }
+
+
+        header > .top{
+            background:linear-gradient(lightcyan,aliceblue);
+            border-bottom: 0.5px solid slategrey;
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        header > .main{
+            height: 60%;
+            background: linear-gradient(cornsilk,lemonchiffon);
+            /* extra ul may be out of screen */
+            display: flex;
+            align-items: center;
+            justify-content:flex-end;
+            font: 'italic', sans-serif;
+            border-bottom: 1px  solid slategray;
+        }
+
+        .grid{
+            position: relative;
+            width: 98%;
+            /*top: 100px;*/
+            display: flex;/*
+            justify-content: flex-start;*/
+            flex-wrap: wrap;
+            padding-bottom: 1%;
+            padding-left: 1%;
+            padding-right: 1%;
+            padding-top: 2%;
+            /*border-top: solid;*/
+            border-bottom: solid;
+
+        }
+
+        .grid > .col-3{
+            display: inline-block;
+            height: 90%;
+            width: 30%;
+            margin-left: 1%;
+            margin-right: 1%;
+            margin-bottom: 1%;
+        }
+
+        .col-3,.item {
+            flex-direction: row;
+            /*height: 450px;*/
+        }
+
+
+
+        .item > .imageContainer {
+            background-size: cover;
+            width: 100%;
+            height: 330px;
+        }
+
+        .item > #like{
+            /*font: 1em 'Lucida Console';*/
+            font: 1em italic;
+            height: 15%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .item > #author{
+            height: 10%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .item > #vote{
+            height: 10%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .item > .clock {
+            height: 20%;
+            background:#202020;
+            font:bold 12px Arial, Helvetica, sans-serif;
+            margin:0;
+            padding:0;
+            color:#bbbbbb;
+            width:70%;
+            margin:0 auto;
+            /*padding:30px;*/
+            border:1px solid #333;
+            color:#fff;
+
+        }
+
+        .imageContainer:hover  #mask{
+            transition: background-color 500ms ease;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .imageContainer:hover .border{
+            transition: all 500ms ease;
+            border: 3px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #mask {
+            background-color: rgba(0,0,0,0);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .border{
+            background-color: transparent;
+            border-radius: 50%;
+            height: 3em;
+            width: 3em;
+            display: none;
+        }
+
+        .border:hover {
+            transition: all 500ms ease;
+            border: 20px solid white;
+            height: 6em;
+            width: 6em;
+        }
+
+
+        .button{
+            /*display: inline-block;*/
+            /*margin: 10px;*/
+            padding: 0 1px;
+            text-align: center;
+            font: bold 0.8em/1.6em bolder, sans-serif;
+
+            text-shadow: 20px 20px 20px rgba(255,255,255,.22);
+            border-radius: 90px;
+            box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+            transition: all 0.15s ease;
+            color: black;
+            text-transform: uppercase;
+            background: #a5cd4e;
+            background: -moz-linear-gradient(top,  #d3d3d3 0%,#8a8a8a 100%);
+        }
+
+        .button:hover{
+            box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+        }
+
+        .main > ul{
+            text-align: right;
+            list-style: none;
+            white-space: nowrap;
+            height: 100%;
+            padding: 0;
+        }
+
+
+        .main > ul > li{
+            text-align: center;
+            height: 100%;
+            padding-left: 1em;
+            padding-right: 1em;
+            border-left: 1px solid slategrey;
+            display: inline-block;
+            position: relative;
+            line-height:4em;
+        }
+
+        .main > ul > li > ul{
+            display: none;
+            background-color: #1eb8ac;
+            border: 1px solid slategrey;
+            white-space: nowrap;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .main > ul > li:hover > ul{
+            transition: all 1500ms ease;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .main > ul > li >ul >li{
+            text-align: left;
+            display: block;
+            height: 60px;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        .main > ul > li >ul >li:hover{
+            background-color: red;
+        }
+
+
+        ul {
+            margin:0 auto;
+            padding:0px;
+            display: flex;
+            justify-content: space-around;
+            list-style:none;
+            text-align:center;
+            overflow: visible;
+        }
+        ul li {
+            display:inline;
+            height: 1em;
+            font-size:1em;
+            text-align:center;
+            font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+            text-shadow:0 0 5px #00c6ff;
+        }
+
+        #point {
+            position:relative;
+            -moz-animation:mymove 1s ease infinite;
+            padding-left:10px;
+            padding-right:10px;
+        }
+
+        @-moz-keyframes mymove
+        {
+            0% {
+                opacity:1.0;
+                text-shadow:0 0 20px #00c6ff;
+            }
+            50% {
+                opacity:0;
+                text-shadow:none;
+            }
+            100% {
+                opacity:1.0;
+                text-shadow:0 0 20px #00c6ff;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var items = document.getElementsByClassName('item');
+            var image = document.getElementsByClassName('imageContainer');
+            var border = document.getElementsByClassName('border');
+            for(var i = 0 ; i < image.length; i++){
+                image[i].style.backgroundImage = 'url("img/image' + (i + 1) + '.jpg")';
+                border[i].innerHTML = 'AlexF';
+                var clock = document.createElement('div');
+                clock.className = 'clock';
+                var ul = document.createElement('ul');
+                var hours = document.createElement('li');
+                hours.id = 'hours';
+                var min = document.createElement('li');
+                min.id = 'min';
+                var sec = document.createElement('li');
+                sec.id = 'sec';
+                var p1 = document.createElement('li');
+                var p2 = document.createElement('li');
+                p1.id = 'point';
+                p2.id = 'point';
+
+                setInterval( function() {
+                    var seconds = new Date().getSeconds();
+                    sec.innerHTML = ( seconds < 10 ? "0" : "" ) + seconds;
+                },1000);
+
+                setInterval( function() {
+                    var minutes = new Date().getMinutes();
+                    min.innerHTML = ( minutes < 10 ? "0" : "" ) + minutes;
+                },1000);
+
+                setInterval( function() {
+                    hours.innerHTML = (new Date().getHours() < 10 ? "0" : "") + new Date().getHours();
+                }, 1000);
+
+                clock.appendChild(ul);
+                ul.appendChild(hours);
+                ul.appendChild(p1);
+                ul.appendChild(min);
+                ul.appendChild(p2);
+                ul.appendChild(sec);
+                items[i].appendChild(clock);
+            }
+
+
+            var height = document.getElementsByClassName('main')[0].offsetHeight;
+            document.addEventListener('scroll',function(event){
+                var main = document.getElementsByClassName('main')[0];
+                console.log(main.offsetHeight + '    ' + event.pageY);
+                if(event.pageY > main.offsetTop){
+                    main.style.position = 'fixed';
+                    main.style.top = '0px';
+                    main.style.width = '100%';
+                    main.style.height = height + 'px';
+                    main.style.zIndex = 1;
+                }
+
+                else{
+                    main.style.position = '';
+                    main.style.zIndex = 0;
+                }
+            });
+
+        });
+
+        function getElementTop(element) {
+            var actualTop = element.offsetTop,
+                    current = element.offsetParent;
+            while (current !== null) {
+                actualTop += current.offsetTop;
+                current = current.offsetParent;
+            }
+            return actualTop;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="top">
+            The awards for design, creativity and innovation on the internet
+        </nav>
+
+        <nav class="main">
+            <ul>
+                <li>Home</li>
+                <li>Website Awards
+                    <ul>
+                        <li>Site of the day</li>
+                        <li>Site of the month</li>
+                        <li>Site of the year</li>
+                        <li>Honorable mentions</li>
+                        <li>Winners List</li>
+                    </ul>
+                </li>
+                <li>Nominees</li>
+                <li>About
+                    <ul>
+                        <li>About us</li>
+                        <li>Status System</li>
+                    </ul>
+                </li>
+                <li>Blog</li>
+                <li>Jobs</li>
+                <li>Editorial
+                    <ul>
+                        <li>Events</li>
+                        <li>Directory</li>
+                    </ul>
+                </li>
+                <li>Submit your site</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class='grid'>
+
+        <div class="item col-3">
+            <div class="imageContainer">
+                <div id="mask">
+                    <div class="border">
+                        Alex
+                    </div>
+                </div>
+            </div>
+
+            <div id="like">
+                Like it
+                <button class="button" id="like">like!</button>
+            </div>
+            <div id="author">
+                By from with
+            </div>
+            <div id="vote">
+                <button class="button">Vote!</button>
+            </div>
+        </div>
+
+
+        <div class="item col-3">
+            <div class="imageContainer">
+                <div id="mask">
+                    <div class="border">
+                        Alex
+                    </div>
+                </div>
+            </div>
+
+            <div id="like">
+                Like it
+                <button class="button" id="like">like!</button>
+            </div>
+
+            <div id="author">
+                By from with
+            </div>
+            <div id="vote">
+                <button class="button">Vote!</button>
+            </div>
+        </div>
+
+
+        <div class="item col-3">
+            <div class="imageContainer">
+                <div id="mask">
+                    <div class="border">
+                        Alex
+                    </div>
+                </div>
+            </div>
+
+            <div id="like">
+                Like it
+                <button class="button" id="like">like!</button>
+            </div>
+
+            <div id="author">
+                By from with
+            </div>
+            <div id="vote">
+                <button class="button">Vote!</button>
+            </div>
+        </div>
+
+        <div class="item col-3">
+            <div class="imageContainer">
+                <div id="mask">
+                    <div class="border">
+                        Alex
+                    </div>
+                </div>
+            </div>
+
+            <div id="like">
+                Like it
+                <button class="button" id="like">like!</button>
+            </div>
+
+            <div id="author">
+                By from with
+            </div>
+            <div id="vote">
+                <button class="button">Vote!</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="item col-3">
+            <div class="imageContainer">
+                <div id="mask">
+                    <div class="border">
+                        Alex
+                    </div>
+                </div>
+            </div>
+
+            <div id="like">
+                Like it
+                <button class="button" id="like">like!</button>
+            </div>
+
+            <div id="author">
+                By from with
+            </div>
+            <div id="vote">
+                <button class="button">Vote!</button>
+            </div>
+        </div>
+
+        <div class="item col-3">
+            <div class="imageContainer">
+                <div id="mask">
+                    <div class="border">
+                        Alex
+                    </div>
+                </div>
+            </div>
+
+            <div id="like">
+                Like it
+                <button class="button" id="like">like!</button>
+            </div>
+
+            <div id="author">
+                By from with
+            </div>
+            <div id="vote">
+                <button class="button">Vote!</button>
+            </div>
+        </div>
+
+        <div class="item col-3">
+            <div class="imageContainer">
+                <div id="mask">
+                    <div class="border">
+                        Alex
+                    </div>
+                </div>
+            </div>
+
+            <div id="like">
+                Like it
+                <button class="button" id="like">like!</button>
+            </div>
+
+            <div id="author">
+                By from with
+            </div>
+            <div id="vote">
+                <button class="button">Vote!</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
