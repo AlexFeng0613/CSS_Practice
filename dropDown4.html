@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+        }
+
+
+        ul{
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(#ccc, #eee);
+            text-align: right;
+        }
+
+        ul > li{
+            display: inline;
+            padding: 4% 2%;
+            position: relative;
+        }
+
+        ul > li > ul{
+            position: absolute;
+            left: 0;
+            width: 100%;
+        }
+
+        ul > li > ul > li {
+            text-align: center;
+            padding: 0 0 0 0%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4
+                <ul>
+                    <li>4.1</li>
+                    <li>4.2</li>
+                    <li>4.3</li>
+                    <li>4.4</li>
+                    <li>4.5</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>

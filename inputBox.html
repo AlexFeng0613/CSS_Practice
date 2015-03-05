@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .highlight{
+            font-weight: bold;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <div id="text">Create an html page</div>
+    <script>
+        var input = document.getElementsByTagName('input')[0];
+        var innerHTML = document.getElementById('text').innerHTML;
+        input.addEventListener('input',function(){
+            text.innerHTML = innerHTML.replace(new RegExp(this.value,'gmi'),
+                '<span class="highlight">' + this.value + '</span>');
+        });
+    </script>
+</body>
+</html>

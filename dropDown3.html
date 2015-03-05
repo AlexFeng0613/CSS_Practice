@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        body{
+            margin: 0;
+            background: linear-gradient(lightyellow,wheat);
+            background-attachment: fixed;
+            height: 100vh;
+        }
+        nav {
+            position: absolute;
+            background: linear-gradient(#ccc, #eee);
+            border: 1px solid gray;
+        }
+
+        nav > ul{/*
+            display: inline;
+            text-align: center;
+            padding: 0 0.75em;*/
+            margin: 0;
+            float: left;
+            list-style: none;
+        }
+
+
+        nav > ul > li{
+            position: relative;
+            display: inline-block;
+            margin-right: -4px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            /*position: relative;*/
+            /*
+            float: left;
+            width: 8.75em;
+            left: 0;
+            position: relative;*/
+        }
+
+
+        nav > ul > li > ul{
+            padding: 0;
+            position: absolute;
+            width: 150px;
+            top: 100%;
+            box-shadow: none;
+            /*display: none;
+            opacity: 0;
+            visibility: hidden;*/
+
+            /*
+            -transition: opacity 0.2s;*//*
+            float: left;
+            position: absolute;
+            display: block;
+            list-style: none;
+            border: 1px solid white;
+            top:69px;
+            left: 0px;*/
+        }
+
+        nav > ul > li > ul > li{
+            background: #000;
+            display: block;
+            color: #fff;
+            text-shadow: 0 -1px 0 #000;
+            padding: 15px 20px;
+            /*padding: 0.5em 0.75em;*/
+        }
+
+    </style>
+    <script>
+    </script>
+</head>
+<body>
+<nav>
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Settings
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3
+                    <ul>
+                        <li>3.1</li>
+                        <li>3.2</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</nav>
+</body>
+</html>

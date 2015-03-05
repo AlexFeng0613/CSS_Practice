@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            font-family: 'Courier New';
+        }
+        .collapsed > * {
+            display: none;
+        }
+    </style>
+    <script>
+        // create a documentfragment / a div to hold on to the tree structure
+
+        // write a recursive function which creates the tree structure and lists out all the children of a node
+        document.addEventListener('DOMContentLoaded', function () {
+            // create a parallel structure
+            var div = document.createElement('div');
+            // loop over all the children of the body and create cloned structure on the div
+
+            console.log(document.body.getElementsByClassName('collapsed'));
+            function recursiveBuild(parent_parallel, parent,level) {
+                var children = parent.children;
+                ++level;
+                for (var i = 0, len = children.length; i < len; i++) {
+                    var child = children[i];
+                    var element = document.createElement('div');
+                    var head;
+                    for(var  j = 0; j < level;j++){
+                        head += '-';
+                    }
+                    element.innerHTML = head + '[+]' + child.tagName;
+                    element.className = 'collapsed';
+                    element.addEventListener('click',function(event){
+                        this.className = (this.className === 'collapsed') ? '' : 'collapsed';
+                        event.stopPropagation();
+                    });
+                    parent_parallel.appendChild(element);
+                    recursiveBuild(element, child,level);
+                }
+            }
+
+            recursiveBuild(div, document.body);
+            console.log(div);
+
+            document.body.appendChild(div);
+            document.body.firstElementChild.addEventListener('click', function (event) {
+                console.log(this.className);
+                this.className = (this.className === 'collapsed') ? '' : 'collapsed';
+            });
+        });
+    </script>
+</head>
+<body>
+<div>
+    <div>
+        <div>
+            <ul>
+                <li>Rice</li>
+                <li>Andy</li>
+                <li>Da Feng</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font: 1em 'Arial';
+        }
+        .container{
+            background-image: url('img/image1.jpg');
+            background-size: cover;
+            width: 500px;
+            height: 300px;
+
+        }
+        
+        .mask{
+            background-color: rgba(0,0,0,0);
+
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .container:hover > .mask{
+            transition: background-color 500ms ease;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .container:hover .circle{
+            transition: all 500ms ease;
+            border: 3px solid white;
+            color: white;
+        }
+
+        .circle{
+            height: 2em;
+            width: 2em;
+            line-height: 2em;
+            text-align: center;
+            color: transparent;
+            border-radius: 100%;
+            border:3px transparent;
+        }
+
+        .circle:hover{
+            height: 5em;
+            width: 5em;
+            line-height: 5em;
+            transition: all 500ms ease;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mask">
+            <div class="circle">
+                Da
+            </div>
+        </div>
+    </div>
+</body>
+</html>
